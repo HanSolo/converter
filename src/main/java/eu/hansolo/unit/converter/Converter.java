@@ -27,23 +27,6 @@ import java.util.stream.Collectors;
 
 
 public class Converter {
-    public static final Pattern SI_PATTERN = Pattern.compile("/\\.0+$|(\\.[0-9]*[1-9])0+$/");
-    public enum SI {
-        E(1E18),
-        P(1E15),
-        T(1E12),
-        G(1E9),
-        M(1E6),
-        k(1E3);
-
-        private final double VALUE;
-
-        SI(final double VALUE) {
-            this.VALUE = VALUE;
-        }
-
-        public double getValue() { return VALUE; }
-    }
     public enum Category {
         ACCELERATION,
         ANGLE,
@@ -270,6 +253,7 @@ public class Converter {
         }
     }
 
+    public  static final String[]                          ABBREVIATIONS      = { "k", "M", "G", "T", "P", "E", "Z", "Y" };
     public  static final int                               MAX_NO_OF_DECIMALS = 12;
     private static final EnumMap<Category, UnitDefinition> BASE_UNITS         = new EnumMap<Category, UnitDefinition>(Category.class) {
         {
@@ -416,12 +400,14 @@ public class Converter {
     }
     public static final String format(final double NUMBER, final int DECIMALS, final Locale LOCALE) {
         String formatString = new StringBuilder("%.").append(clamp(0, 12, DECIMALS)).append("f").toString();
-        for (SI si : SI.values()) {
-            if (Math.abs(NUMBER) > si.getValue()) {
-                return String.join("", String.format(LOCALE, formatString, (NUMBER / si.getValue())).replace(SI_PATTERN.pattern(), "$1"), si.name());
+        double value;
+        for(int i = ABBREVIATIONS.length - 1 ; i >= 0; i--) {
+            value = Math.pow(1000, i+1);
+            if (Double.compare(NUMBER, -value) <= 0 || Double.compare(NUMBER, value) >= 0) {
+                return String.format(LOCALE, formatString, (NUMBER / value)) + ABBREVIATIONS[i];
             }
         }
-        return String.format(LOCALE, formatString, NUMBER).replace(SI_PATTERN.pattern(), "$1");
+        return String.format(LOCALE, formatString, NUMBER);
     }
 
     private static int clamp(final int MIN, final int MAX, final int VALUE) {
