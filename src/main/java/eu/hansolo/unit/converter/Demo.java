@@ -38,6 +38,9 @@ public class Demo {
 
         // Convert meter to centimeter
         System.out.println(lengthConverter.convertToString(meter, CENTIMETER));
+
+        // Shorten long numbers
+        System.out.println(lengthConverter.format(1500000, 1));
     }
 
     public static void main(String[] args) {

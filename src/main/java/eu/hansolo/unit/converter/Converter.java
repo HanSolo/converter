@@ -27,6 +27,23 @@ import java.util.stream.Collectors;
 
 
 public class Converter {
+    public static final Pattern SI_PATTERN = Pattern.compile("/\\.0+$|(\\.[0-9]*[1-9])0+$/");
+    public enum SI {
+        E(1E18),
+        P(1E15),
+        T(1E12),
+        G(1E9),
+        M(1E6),
+        k(1E3);
+
+        private final double VALUE;
+
+        SI(final double VALUE) {
+            this.VALUE = VALUE;
+        }
+
+        public double getValue() { return VALUE; }
+    }
     public enum Category {
         ACCELERATION,
         ANGLE,
@@ -392,6 +409,25 @@ public class Converter {
             if (unitDefinition.UNIT.isActive()) { UNIT_DEFINITIONS.get(unitDefinition.UNIT.getCategory()).add(unitDefinition); }
         }
         return UNIT_DEFINITIONS;
+    }
+
+    public static final String format(final double NUMBER, final int DECIMALS) {
+        return format(NUMBER, clamp(0, 12, DECIMALS), Locale.US);
+    }
+    public static final String format(final double NUMBER, final int DECIMALS, final Locale LOCALE) {
+        String formatString = new StringBuilder("%.").append(clamp(0, 12, DECIMALS)).append("f").toString();
+        for (SI si : SI.values()) {
+            if (Math.abs(NUMBER) > si.getValue()) {
+                return String.join("", String.format(LOCALE, formatString, (NUMBER / si.getValue())).replace(SI_PATTERN.pattern(), "$1"), si.name());
+            }
+        }
+        return String.format(LOCALE, formatString, NUMBER).replace(SI_PATTERN.pattern(), "$1");
+    }
+
+    private static int clamp(final int MIN, final int MAX, final int VALUE) {
+        if (VALUE < MIN) return MIN;
+        if (VALUE > MAX) return MAX;
+        return VALUE;
     }
 
     @Override public String toString() { return getUnitType().toString(); }
