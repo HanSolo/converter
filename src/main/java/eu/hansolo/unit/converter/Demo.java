@@ -16,8 +16,6 @@
 
 package eu.hansolo.unit.converter;
 
-import java.util.Locale;
-
 import static eu.hansolo.unit.converter.Converter.UnitDefinition.*;
 import static eu.hansolo.unit.converter.Converter.Category.*;
 
@@ -42,9 +40,9 @@ public class Demo {
         System.out.println(lengthConverter.convertToString(meter, CENTIMETER));
 
         // Shorten long numbers
-        System.out.println(Converter.format(1500000, 1));
+        System.out.println(Converter.format(1_500_000, 1));
 
-        System.out.println(Converter.format(1000000, 0));
+        System.out.println(Converter.format(1_000_000, 0));
     }
 
     public static void main(String[] args) {
