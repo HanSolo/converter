@@ -31,8 +31,9 @@ public class Converter {
         ACCELERATION,
         ANGLE,
         AREA,
-        DATA,
+        CSS_UNITS,
         CURRENT,
+        DATA,
         ELECTRIC_CHARGE,
         ENERGY,
         FORCE,
@@ -245,7 +246,11 @@ public class Converter {
         MEGAWATT(new Unit(Category.WORK, "MW", "Megawatt", new BigDecimal("1.0E6"))),
         GIGAWATT(new Unit(Category.WORK, "GW", "Gigawatt", new BigDecimal("1.0E9"))),
         HORSEPOWER(new Unit(Category.WORK, "hp", "Horsepower", new BigDecimal("735.49875"))),
-        JOULE_PER_SECOND(new Unit(Category.WORK, "J/s", "Joule per second", new BigDecimal("1.0E0")));
+        JOULE_PER_SECOND(new Unit(Category.WORK, "J/s", "Joule per second", new BigDecimal("1.0E0"))),
+
+        // Css Units
+        PX(new Unit(Category.CSS_UNITS, "px", "Pixel", new BigDecimal("1.0"))),
+        PT(new Unit(Category.CSS_UNITS, "pt", "Point", new BigDecimal("0.75")));
         
         public final Unit UNIT;
 
@@ -277,7 +282,7 @@ public class Converter {
             put(Category.TEMPERATURE_GRADIENT, UnitDefinition.KELVIN_PER_SECOND);
             put(Category.TIME, UnitDefinition.SECOND);
             put(Category.TORQUE, UnitDefinition.NEWTON_METER);
-            put(Category.VOLUME, UnitDefinition.CUBIC_MILLIMETER);
+            put(Category.VOLUME, UnitDefinition.CUBIC_METER);
             put(Category.VOLTAGE, UnitDefinition.VOLT);
             put(Category.WORK, UnitDefinition.WATT);
         }

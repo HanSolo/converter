@@ -29,12 +29,29 @@ public class Demo {
         double    kelvin               = temperatureConverter.convert(celsius, KELVIN);
         System.out.println(celsius + "°C   =>   " + fahrenheit + "°F    =>   " + kelvin + "°K");
 
+        /*
+        Converter cssConverter = new Converter(CSS_UNITS, PX);
+        double    point = 12;
+        double    pixel = cssConverter.convert(point, PX);
+        System.out.println(point + "pt  =>  " + pixel + "px");
+        */
 
         Converter lengthConverter = new Converter(LENGTH, METER); // Type Length with BaseUnit Meter
         double    meter           = 1.0;
         double    inches          = lengthConverter.convert(meter, INCHES);
         double    nanometer       = lengthConverter.convert(inches, NANOMETER);
         System.out.println(meter + " " + lengthConverter.getUnitShort() + "   =>   " + inches + " in   =>   " + nanometer + " nm");
+
+
+        Converter volumeConverter = new Converter(VOLUME, CUBIC_METER);
+        double cubicMeter = 3;
+        double liters = volumeConverter.convert(cubicMeter, LITER);
+        System.out.println(cubicMeter + " cubic meter -> " + liters + " liter");
+
+        Converter literConverter = new Converter(VOLUME, LITER);
+        double liter = 3000;
+        double cubicMeters = literConverter.convert(liter, CUBIC_METER);
+        System.out.println(liter + " liter -> " + cubicMeters + " cubic meter");
 
         // Convert meter to centimeter
         System.out.println(lengthConverter.convertToString(meter, CENTIMETER));
