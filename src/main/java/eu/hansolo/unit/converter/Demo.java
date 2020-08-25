@@ -53,6 +53,16 @@ public class Demo {
         double cubicMeters = literConverter.convert(liter, CUBIC_METER);
         System.out.println(liter + " liter -> " + cubicMeters + " cubic meter");
 
+        Converter glucoseConverter = new Converter(BLOOD_GLUCOSE, MILLIMOL_PER_LITER);
+        double millimolPerLiter = 6.0;
+        double milligramPerDeciliter = glucoseConverter.convert(millimolPerLiter, MILLIGRAM_PER_DECILITER);
+        System.out.println(millimolPerLiter + "mmol/l -> " + milligramPerDeciliter + "mg/dl");
+
+        Converter mgdlConverter = new Converter(BLOOD_GLUCOSE, MILLIGRAM_PER_DECILITER);
+        double mgdl = 108.108108;
+        double mmoll = mgdlConverter.convert(mgdl, MILLIMOL_PER_LITER);
+        System.out.println(mgdl + " mg/dl -> " + mmoll + " mmol/l");
+
         // Convert meter to centimeter
         System.out.println(lengthConverter.convertToString(meter, CENTIMETER));
 

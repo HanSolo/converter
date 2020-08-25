@@ -50,7 +50,8 @@ public class Converter {
         TORQUE,
         VOLUME,
         VOLTAGE,
-        WORK
+        WORK,
+        BLOOD_GLUCOSE
     }
     public enum UnitDefinition {
         // Length
@@ -250,7 +251,11 @@ public class Converter {
 
         // Css Units
         PX(new Unit(Category.CSS_UNITS, "px", "Pixel", new BigDecimal("1.0"))),
-        PT(new Unit(Category.CSS_UNITS, "pt", "Point", new BigDecimal("0.75")));
+        PT(new Unit(Category.CSS_UNITS, "pt", "Point", new BigDecimal("0.75"))),
+
+        // Blood Glucose
+        MILLIGRAM_PER_DECILITER(new Unit(Category.BLOOD_GLUCOSE, "mg/dl", "Milligram per deciliter", new BigDecimal("0.0555"))),
+        MILLIMOL_PER_LITER(new Unit(Category.BLOOD_GLUCOSE, "mmol/l", "Millimols per liter", new BigDecimal("1.0")));
         
         public final Unit UNIT;
 
@@ -285,6 +290,7 @@ public class Converter {
             put(Category.VOLUME, UnitDefinition.CUBIC_METER);
             put(Category.VOLTAGE, UnitDefinition.VOLT);
             put(Category.WORK, UnitDefinition.WATT);
+            put(Category.BLOOD_GLUCOSE, UnitDefinition.MILLIMOL_PER_LITER);
         }
     };
 
