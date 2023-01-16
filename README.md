@@ -23,16 +23,30 @@ A Java tool to convert between units. It covers the following categories of unit
    - ARES
    - SQUARE_INCH
    - SQUARE_FOOT
- - DATA
+ - DATA (k=1024)
    - BIT
    - KILOBIT
    - MEGABIT
    - GIGABIT
+   - TERABIT
+   - PETABIT
    - BYTE
    - KILOBYTE
    - MEGABYTE
    - GIGABYTE
    - TERABYTE
+   - PETABYTE
+ - DATA_B10 (k=1000)
+   - KILOBIT_B10
+   - MEGABIT_B10
+   - GIGABIT_B10
+   - TERABIT_B10
+   - PETABIT_B10
+   - KILOBYTE_B10
+   - MEGABYTE_B10
+   - GIGABYTE_B10
+   - TERABYTE_B10
+   - PETABYTE_B10
  - CURRENT
    - PICOAMPERE
    - NANOAMPERE

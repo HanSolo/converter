@@ -34,6 +34,7 @@ public class Converter {
         CSS_UNITS,
         CURRENT,
         DATA,
+        DATA_B10,
         ELECTRIC_CHARGE,
         ENERGY,
         FORCE,
@@ -217,14 +218,29 @@ public class Converter {
 
         // Data
         BIT(new Unit(Category.DATA, "b", "Bit", new BigDecimal("1.0"))),
-        KILOBIT(new Unit(Category.DATA, "Kb", "KiloBit", new BigDecimal("1024"))),
-        MEGABIT(new Unit(Category.DATA, "Mb", "Megabit", new BigDecimal("1048576"))),
-        GIGABIT(new Unit(Category.DATA, "Gb", "Gigabit", new BigDecimal("1073741824"))),
+        KILOBIT(new Unit(Category.DATA, "Kb", "KiloBit", new BigDecimal(String.valueOf(1024)))),
+        MEGABIT(new Unit(Category.DATA, "Mb", "Megabit", new BigDecimal(String.valueOf(Math.pow(1024,2))))),
+        GIGABIT(new Unit(Category.DATA, "Gb", "Gigabit", new BigDecimal(String.valueOf(Math.pow(1024,3))))),
+        TERABIT(new Unit(Category.DATA, "Tb", "Gigabit", new BigDecimal(String.valueOf(Math.pow(1024, 4))))),
+        PETABIT(new Unit(Category.DATA, "Pb", "Gigabit", new BigDecimal(String.valueOf(Math.pow(1024, 5))))),
         BYTE(new Unit(Category.DATA, "B", "Byte", new BigDecimal("8"))),
-        KILOBYTE(new Unit(Category.DATA, "KB", "Kilobyte", new BigDecimal("8192"))),
-        MEGABYTE(new Unit(Category.DATA, "MB", "Megabyte", new BigDecimal("8388608"))),
-        GIGABYTE(new Unit(Category.DATA, "GB", "Gigabyte", new BigDecimal("8.589934592E9"))),
-        TERABYTE(new Unit(Category.DATA, "TB", "Terabyte", new BigDecimal("8.796093E12"))),
+        KILOBYTE(new Unit(Category.DATA, "KB", "Kilobyte", new BigDecimal(String.valueOf(8 * 1024)))),
+        MEGABYTE(new Unit(Category.DATA, "MB", "Megabyte", new BigDecimal(String.valueOf(8 * Math.pow(1024, 2))))),
+        GIGABYTE(new Unit(Category.DATA, "GB", "Gigabyte", new BigDecimal(String.valueOf(8 * Math.pow(1024, 3))))),
+        TERABYTE(new Unit(Category.DATA, "TB", "Terabyte", new BigDecimal(String.valueOf(8 * Math.pow(1024, 4))))),
+        PETABYTE(new Unit(Category.DATA, "PB", "Petabyte", new BigDecimal(String.valueOf(8 * Math.pow(1024, 5))))),
+
+        //Data_B10
+        KILOBIT_B10(new Unit(Category.DATA, "Kb", "KiloBit", new BigDecimal(String.valueOf(1000)))),
+        MEGABIT_B10(new Unit(Category.DATA, "Mb", "Megabit", new BigDecimal(String.valueOf(Math.pow(1000, 2))))),
+        GIGABIT_B10(new Unit(Category.DATA, "Gb", "Gigabit", new BigDecimal(String.valueOf(Math.pow(1000, 3))))),
+        TERABIT_B10(new Unit(Category.DATA, "Tb", "Gigabit", new BigDecimal(String.valueOf(Math.pow(1000, 4))))),
+        PETABIT_B10(new Unit(Category.DATA, "Pb", "Gigabit", new BigDecimal(String.valueOf(Math.pow(1000, 5))))),
+        KILOBYTE_B10(new Unit(Category.DATA, "KB", "Kilobyte", new BigDecimal(String.valueOf(8 * 1000)))),
+        MEGABYTE_B10(new Unit(Category.DATA, "MB", "Megabyte", new BigDecimal(String.valueOf(8 * Math.pow(1000, 2))))),
+        GIGABYTE_B10(new Unit(Category.DATA, "GB", "Gigabyte", new BigDecimal(String.valueOf(8 * Math.pow(1000, 3))))),
+        TERABYTE_B10(new Unit(Category.DATA, "TB", "Terabyte", new BigDecimal(String.valueOf(8 * Math.pow(1000, 4))))),
+        PETABYTE_B10(new Unit(Category.DATA, "PB", "Petabyte", new BigDecimal(String.valueOf(8 * Math.pow(1000, 5))))),
 
         // Luminance
         CANDELA_SQUARE_METER(new Unit(Category.LUMINANCE, "cd/m\u00b2", "Candela per Square Meter", new BigDecimal("1.0"))),
@@ -274,6 +290,7 @@ public class Converter {
             put(Category.AREA, UnitDefinition.SQUARE_METER);
             put(Category.CURRENT, UnitDefinition.AMPERE);
             put(Category.DATA, UnitDefinition.BIT);
+            put(Category.DATA_B10, UnitDefinition.BIT);
             put(Category.ELECTRIC_CHARGE, UnitDefinition.ELEMENTARY_CHARGE);
             put(Category.ENERGY, UnitDefinition.JOULE);
             put(Category.FORCE, UnitDefinition.NEWTON);
@@ -354,7 +371,7 @@ public class Converter {
     public final double convert(final double VALUE, final UnitDefinition UNIT_DEFINITION) {
         if (UNIT_DEFINITION.UNIT.getCategory() != getUnitType()) { throw new IllegalArgumentException("units have to be of the same type"); }
         return ((((VALUE + baseUnitDefinition.UNIT.getOffset().doubleValue()) * baseUnitDefinition.UNIT.getFactor().doubleValue()) + bean.getOffset().doubleValue()) * bean.getFactor().doubleValue()) / UNIT_DEFINITION.UNIT
-            .getFactor().doubleValue() - UNIT_DEFINITION.UNIT.getOffset().doubleValue();
+                .getFactor().doubleValue() - UNIT_DEFINITION.UNIT.getOffset().doubleValue();
     }
 
     public final String convertToString(final double VALUE, final UnitDefinition UNIT_DEFINITION) {
@@ -363,7 +380,7 @@ public class Converter {
 
     public final double convertToBaseUnit(final double VALUE, final UnitDefinition UNIT_DEFINITION) {
         return ((((VALUE + UNIT_DEFINITION.UNIT.getOffset().doubleValue()) * UNIT_DEFINITION.UNIT.getFactor().doubleValue()) + bean.getOffset().doubleValue()) * bean.getFactor().doubleValue()) / baseUnitDefinition.UNIT
-            .getFactor().doubleValue() - baseUnitDefinition.UNIT.getOffset().doubleValue();
+                .getFactor().doubleValue() - baseUnitDefinition.UNIT.getOffset().doubleValue();
     }
 
     public final Pattern getPattern() {
