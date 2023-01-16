@@ -25,14 +25,41 @@ A Java tool to convert between units. It covers the following categories of unit
    - SQUARE_FOOT
  - DATA
    - BIT
+   - BYTE
+ - k = 1024
    - KILOBIT
    - MEGABIT
    - GIGABIT
-   - BYTE
+   - TERABIT
+   - PETABIT
+   - EXABIT
+   - ZETABIT
+   - YOTABIT
    - KILOBYTE
    - MEGABYTE
    - GIGABYTE
    - TERABYTE
+   - PETABYTE
+   - EXABYTE
+   - ZETABYTE
+   - YOTABYTE
+ - k = 1000
+   - KILOBIT_B1000
+   - MEGABIT_B1000
+   - GIGABIT_B1000
+   - TERABIT_B1000
+   - PETABIT_B1000
+   - EXABIT_B1000
+   - ZETABIT_B1000
+   - YOTABIT_B1000
+   - KILOBYTE_B1000
+   - MEGABYTE_B1000
+   - GIGABYTE_B1000
+   - TERABYTE_B1000
+   - PETABYTE_B1000
+   - EXABYTE_B1000
+   - ZETABYTE_B1000
+   - YOTABYTE_B1000
  - CURRENT
    - PICOAMPERE
    - NANOAMPERE
