@@ -23,7 +23,7 @@ A Java tool to convert between units. It covers the following categories of unit
    - ARES
    - SQUARE_INCH
    - SQUARE_FOOT
- - DATA (k=1024)
+ - DATA
    - BIT
    - BYTE
  - k = 1024
