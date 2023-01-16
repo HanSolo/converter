@@ -34,7 +34,6 @@ public class Converter {
         CSS_UNITS,
         CURRENT,
         DATA,
-        DATA_B10,
         ELECTRIC_CHARGE,
         ENERGY,
         FORCE,
@@ -219,28 +218,39 @@ public class Converter {
         // Data
         BIT(new Unit(Category.DATA, "b", "Bit", new BigDecimal("1.0"))),
         KILOBIT(new Unit(Category.DATA, "Kb", "KiloBit", new BigDecimal(String.valueOf(1024)))),
-        MEGABIT(new Unit(Category.DATA, "Mb", "Megabit", new BigDecimal(String.valueOf(Math.pow(1024,2))))),
-        GIGABIT(new Unit(Category.DATA, "Gb", "Gigabit", new BigDecimal(String.valueOf(Math.pow(1024,3))))),
-        TERABIT(new Unit(Category.DATA, "Tb", "Gigabit", new BigDecimal(String.valueOf(Math.pow(1024, 4))))),
-        PETABIT(new Unit(Category.DATA, "Pb", "Gigabit", new BigDecimal(String.valueOf(Math.pow(1024, 5))))),
+        MEGABIT(new Unit(Category.DATA, "Mb", "Megabit", new BigDecimal(String.valueOf(Math.pow(1024, 2))))),
+        GIGABIT(new Unit(Category.DATA, "Gb", "Gigabit", new BigDecimal(String.valueOf(Math.pow(1024, 3))))),
+        TERABIT(new Unit(Category.DATA, "Tb", "Terabit", new BigDecimal(String.valueOf(Math.pow(1024, 4))))),
+        PETABIT(new Unit(Category.DATA, "Pb", "Petabit", new BigDecimal(String.valueOf(Math.pow(1024, 5))))),
+        EXABIT(new Unit(Category.DATA, "Eb", "Exabit", new BigDecimal(String.valueOf(Math.pow(1024, 6))))),
+        ZETABIT(new Unit(Category.DATA, "Zb", "Zetabit", new BigDecimal(String.valueOf(Math.pow(1024, 7))))),
+        YOTABIT(new Unit(Category.DATA, "Yb", "Yotabit", new BigDecimal(String.valueOf(Math.pow(1024, 8))))),
         BYTE(new Unit(Category.DATA, "B", "Byte", new BigDecimal("8"))),
         KILOBYTE(new Unit(Category.DATA, "KB", "Kilobyte", new BigDecimal(String.valueOf(8 * 1024)))),
         MEGABYTE(new Unit(Category.DATA, "MB", "Megabyte", new BigDecimal(String.valueOf(8 * Math.pow(1024, 2))))),
         GIGABYTE(new Unit(Category.DATA, "GB", "Gigabyte", new BigDecimal(String.valueOf(8 * Math.pow(1024, 3))))),
         TERABYTE(new Unit(Category.DATA, "TB", "Terabyte", new BigDecimal(String.valueOf(8 * Math.pow(1024, 4))))),
         PETABYTE(new Unit(Category.DATA, "PB", "Petabyte", new BigDecimal(String.valueOf(8 * Math.pow(1024, 5))))),
-
-        //Data_B10
-        KILOBIT_B10(new Unit(Category.DATA, "Kb", "KiloBit", new BigDecimal(String.valueOf(1000)))),
-        MEGABIT_B10(new Unit(Category.DATA, "Mb", "Megabit", new BigDecimal(String.valueOf(Math.pow(1000, 2))))),
-        GIGABIT_B10(new Unit(Category.DATA, "Gb", "Gigabit", new BigDecimal(String.valueOf(Math.pow(1000, 3))))),
-        TERABIT_B10(new Unit(Category.DATA, "Tb", "Gigabit", new BigDecimal(String.valueOf(Math.pow(1000, 4))))),
-        PETABIT_B10(new Unit(Category.DATA, "Pb", "Gigabit", new BigDecimal(String.valueOf(Math.pow(1000, 5))))),
-        KILOBYTE_B10(new Unit(Category.DATA, "KB", "Kilobyte", new BigDecimal(String.valueOf(8 * 1000)))),
-        MEGABYTE_B10(new Unit(Category.DATA, "MB", "Megabyte", new BigDecimal(String.valueOf(8 * Math.pow(1000, 2))))),
-        GIGABYTE_B10(new Unit(Category.DATA, "GB", "Gigabyte", new BigDecimal(String.valueOf(8 * Math.pow(1000, 3))))),
-        TERABYTE_B10(new Unit(Category.DATA, "TB", "Terabyte", new BigDecimal(String.valueOf(8 * Math.pow(1000, 4))))),
-        PETABYTE_B10(new Unit(Category.DATA, "PB", "Petabyte", new BigDecimal(String.valueOf(8 * Math.pow(1000, 5))))),
+        EXABYTE(new Unit(Category.DATA, "EB", "Exabyte", new BigDecimal(String.valueOf(8 * Math.pow(1024, 6))))),
+        ZETABYTE(new Unit(Category.DATA, "ZB", "Zetabyte", new BigDecimal(String.valueOf(8 * Math.pow(1024, 7))))),
+        YOTABYTE(new Unit(Category.DATA, "YB", "Yotabyte", new BigDecimal(String.valueOf(8 * Math.pow(1024, 8))))),
+        // Base 1000
+        KILOBIT_B1000(new Unit(Category.DATA, "Kb", "KiloBit", new BigDecimal(String.valueOf(1000)))),
+        MEGABIT_B1000(new Unit(Category.DATA, "Mb", "Megabit", new BigDecimal(String.valueOf(Math.pow(1000, 2))))),
+        GIGABIT_B1000(new Unit(Category.DATA, "Gb", "Gigabit", new BigDecimal(String.valueOf(Math.pow(1000, 3))))),
+        TERABIT_B1000(new Unit(Category.DATA, "Tb", "Terabit", new BigDecimal(String.valueOf(Math.pow(1000, 4))))),
+        PETABIT_B1000(new Unit(Category.DATA, "Pb", "Petabit", new BigDecimal(String.valueOf(Math.pow(1000, 5))))),
+        EXABIT_B1000(new Unit(Category.DATA, "Eb", "Exabit", new BigDecimal(String.valueOf(Math.pow(1000, 6))))),
+        ZETABIT_B1000(new Unit(Category.DATA, "Zb", "Zetabit", new BigDecimal(String.valueOf(Math.pow(1000, 7))))),
+        YOTABIT_B1000(new Unit(Category.DATA, "Yb", "Yotabit", new BigDecimal(String.valueOf(Math.pow(1000, 8))))),
+        KILOBYTE_B1000(new Unit(Category.DATA, "KB", "Kilobyte", new BigDecimal(String.valueOf(8 * 1000)))),
+        MEGABYTE_B1000(new Unit(Category.DATA, "MB", "Megabyte", new BigDecimal(String.valueOf(8 * Math.pow(1000, 2))))),
+        GIGABYTE_B1000(new Unit(Category.DATA, "GB", "Gigabyte", new BigDecimal(String.valueOf(8 * Math.pow(1000, 3))))),
+        TERABYTE_B1000(new Unit(Category.DATA, "TB", "Terabyte", new BigDecimal(String.valueOf(8 * Math.pow(1000, 4))))),
+        PETABYTE_B1000(new Unit(Category.DATA, "PB", "Petabyte", new BigDecimal(String.valueOf(8 * Math.pow(1000, 5))))),
+        EXABYTE_B1000(new Unit(Category.DATA, "EB", "Exabyte", new BigDecimal(String.valueOf(8 * Math.pow(1000, 6))))),
+        ZETABYTE_B1000(new Unit(Category.DATA, "ZB", "Zetabyte", new BigDecimal(String.valueOf(8 * Math.pow(1000, 7))))),
+        YOTABYTE_B1000(new Unit(Category.DATA, "YB", "Yotabyte", new BigDecimal(String.valueOf(8 * Math.pow(1000, 8))))),
 
         // Luminance
         CANDELA_SQUARE_METER(new Unit(Category.LUMINANCE, "cd/m\u00b2", "Candela per Square Meter", new BigDecimal("1.0"))),
@@ -290,7 +300,6 @@ public class Converter {
             put(Category.AREA, UnitDefinition.SQUARE_METER);
             put(Category.CURRENT, UnitDefinition.AMPERE);
             put(Category.DATA, UnitDefinition.BIT);
-            put(Category.DATA_B10, UnitDefinition.BIT);
             put(Category.ELECTRIC_CHARGE, UnitDefinition.ELEMENTARY_CHARGE);
             put(Category.ENERGY, UnitDefinition.JOULE);
             put(Category.FORCE, UnitDefinition.NEWTON);
